@@ -96,6 +96,15 @@ def winner(board)
   end
 end
 
+def winner_symbol(board)
+  game_winner = winner(board)
+  if(game_winner)
+    return board[game_winner[0]]
+  else
+    return nil
+  end
+end
+
 def turn_count(board)
   count = 0
   (0..8).each do |index|
@@ -133,7 +142,8 @@ def play(board)
     turn(board)
   end
   if won?(board)
-    puts "Congratulations"
+    symbol = winner_symbol(board)
+    puts "Congratulations #{symbol}!"
   elsif draw?(board)
     puts "Cat's Game!"
   end
